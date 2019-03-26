@@ -15,52 +15,57 @@ import { TestComponent } from './test/test.component';
 import { OtherTestComponent } from './other-test/other-test.component';
 import { TutorialResolverService } from './tutorial-resolver.service';
 import { StateJoinTestComponent } from './state-join-test/state-join-test.component';
+import { AccountState } from './state-join-test/account.state';
+import { BrandState } from './state-join-test/brand.state';
 
 const appRoutes: Routes = [
-  { path: 'test', component: TestComponent },
-  {
-    path: 'test2',
-    component: OtherTestComponent,
-    resolve: {
-      foo: TutorialResolverService
+    {path: 'test', component: TestComponent},
+    {
+        path: 'test2',
+        component: OtherTestComponent,
+        resolve: {
+            foo: TutorialResolverService
+        }
+    },
+    {
+        path: 'state-join',
+        component: StateJoinTestComponent
+    },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'state-join'
     }
-  },
-  {
-    path: 'state-join',
-    component: StateJoinTestComponent
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'state-join'
-  }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ReadComponent,
-    CreateComponent,
-    TestComponent,
-    OtherTestComponent,
-    StateJoinTestComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
-    NgxsModule.forRoot([
-      TutorialState
-    ]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
-    MatInputModule,
-    BrowserAnimationsModule
-  ],
-  providers: [TutorialResolverService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ReadComponent,
+        CreateComponent,
+        TestComponent,
+        OtherTestComponent,
+        StateJoinTestComponent
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(
+            appRoutes,
+            {enableTracing: true} // <-- debugging purposes only
+        ),
+        NgxsModule.forRoot([
+            AccountState,
+            BrandState,
+            TutorialState,
+        ]),
+        NgxsReduxDevtoolsPluginModule.forRoot(),
+        NgxsLoggerPluginModule.forRoot(),
+        MatInputModule,
+        BrowserAnimationsModule
+    ],
+    providers: [TutorialResolverService],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
