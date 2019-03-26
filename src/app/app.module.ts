@@ -14,6 +14,7 @@ import { CreateComponent } from './create/create.component';
 import { TestComponent } from './test/test.component';
 import { OtherTestComponent } from './other-test/other-test.component';
 import { TutorialResolverService } from './tutorial-resolver.service';
+import { StateJoinTestComponent } from './state-join-test/state-join-test.component';
 
 const appRoutes: Routes = [
   { path: 'test', component: TestComponent },
@@ -25,11 +26,13 @@ const appRoutes: Routes = [
     }
   },
   {
-    path: '**',
-    component: OtherTestComponent,
-    resolve: {
-      foo: TutorialResolverService
-    }
+    path: 'state-join',
+    component: StateJoinTestComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'state-join'
   }
 ];
 
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     ReadComponent,
     CreateComponent,
     TestComponent,
-    OtherTestComponent
+    OtherTestComponent,
+    StateJoinTestComponent
   ],
   imports: [
     BrowserModule,
