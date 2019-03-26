@@ -1,7 +1,7 @@
 // Section 1
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Tutorial } from './../models/tutorial.model'
-import { AddTutorial, RemoveTutorial } from './../actions/tutorial.actions'
+import { AddTutorial, RemoveTutorial, LoadTutorials } from './../actions/tutorial.actions'
 
 // Section 2
 export class TutorialStateModel {
@@ -37,6 +37,14 @@ export class TutorialState {
         patchState({
             tutorials: getState().tutorials.filter(a => a.name != payload)
         })
+    }
+
+    @Action(LoadTutorials)
+    async load({ getState, patchState }: StateContext<TutorialStateModel>) {
+        await new Promise(resolve => setTimeout(() => resolve(), 10000));
+        patchState({
+            tutorials: [{ name: 'test1', url: 'www.google.com' }, { name: 'test2', url: 'www.youporn.com' }]
+        });
     }
 
 }
