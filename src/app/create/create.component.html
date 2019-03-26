@@ -1,7 +1,9 @@
 <div class="left">
 
-  <input type="text" placeholder="name" #name>
-  <input type="text" placeholder="url" #url>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="name" #name>
+  </mat-form-field>
+  <input matInput type="text" placeholder="url" #url>
 
   <button (click)="addTutorial(name.value,url.value)">Add a Tutorial</button>
 </div>

@@ -41,7 +41,7 @@ export class TutorialState {
 
     @Action(LoadTutorials)
     async load({ getState, patchState }: StateContext<TutorialStateModel>) {
-        await new Promise(resolve => setTimeout(() => resolve(), 10000));
+        await new Promise(resolve => setTimeout(() => resolve(), 1000));
         patchState({
             tutorials: [{ name: 'test1', url: 'www.google.com' }, { name: 'test2', url: 'www.youporn.com' }]
         });

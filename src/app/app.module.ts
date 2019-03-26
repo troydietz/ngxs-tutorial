@@ -5,6 +5,8 @@ import { TutorialState } from './state/tutorial.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { ReadComponent } from './read/read.component';
@@ -49,7 +51,9 @@ const appRoutes: Routes = [
       TutorialState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [TutorialResolverService],
   bootstrap: [AppComponent]
