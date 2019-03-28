@@ -14,7 +14,7 @@ export class AccountStateModel {
         account: {
             id: 123,
             name: 'some account',
-            brandIds: [1, 2, 3, 4]
+            brandIds: [1, 4]
         }
     }
 })
@@ -23,6 +23,11 @@ export class AccountState {
     @Selector()
     static getAccount(state: AccountStateModel) {
         return state.account;
+    }
+
+    @Selector()
+    static getBrandIds(state: AccountStateModel): number[] {
+        return state.account.brandIds;
     }
 
 }
