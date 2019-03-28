@@ -7,3 +7,6 @@
 <h1>Brands</h1>
 <p *ngFor="let brand of brands">id: {{brand.id}} - name: {{brand.name}}</p>
 
+<h1>Account Brands</h1>
+<p *ngFor="let brand of accountBrands$ | async">id: {{brand.id}} - name: {{brand.name}}</p>
+

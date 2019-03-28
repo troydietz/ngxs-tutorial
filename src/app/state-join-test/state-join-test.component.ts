@@ -5,6 +5,7 @@ import { AccountState } from './account.state';
 import { BrandState } from './brand.state';
 import { Account } from './account';
 import { Brand } from './brand';
+import { AccountBrandsQuery } from './account-brands.selectors';
 
 @Component({
     selector: 'app-state-join-test',
@@ -18,6 +19,9 @@ export class StateJoinTestComponent implements OnInit {
 
     @Select(BrandState.getBrands)
     brand$: Observable<Brand[]>;
+
+    @Select(AccountBrandsQuery.getBrands)
+    accountBrands$: Observable<Brand[]>
 
     public account: Account;
     public brands: Brand[];
