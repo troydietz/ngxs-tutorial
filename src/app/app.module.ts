@@ -17,6 +17,7 @@ import { TutorialResolverService } from './tutorial-resolver.service';
 import { StateJoinTestComponent } from './state-join-test/state-join-test.component';
 import { AccountState } from './state-join-test/account.state';
 import { BrandState } from './state-join-test/brand.state';
+import { BrandModule } from './brand.module';
 
 const appRoutes: Routes = [
     {path: 'test', component: TestComponent},
@@ -55,13 +56,13 @@ const appRoutes: Routes = [
         ),
         NgxsModule.forRoot([
             AccountState,
-            BrandState,
             TutorialState,
         ]),
         NgxsReduxDevtoolsPluginModule.forRoot(),
         NgxsLoggerPluginModule.forRoot(),
         MatInputModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        BrandModule,
     ],
     providers: [TutorialResolverService],
     bootstrap: [AppComponent]
