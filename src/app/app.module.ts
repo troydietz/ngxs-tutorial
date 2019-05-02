@@ -18,6 +18,15 @@ import { StateJoinTestComponent } from './state-join-test/state-join-test.compon
 import { AccountState } from './state-join-test/account.state';
 import { BrandState } from './state-join-test/brand.state';
 import { BrandModule } from './brand.module';
+import { FormsComponent } from './forms/forms/forms.component';
+import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material';
+import { ReactiveComponent } from './forms/reactive/reactive/reactive.component';
+import { NameEditorComponent } from './forms/reactive/name-editor/name-editor.component';
+import { ProfileEditorComponent } from './forms/reactive/profile-editor/profile-editor.component';
+import { NestedComponent } from './forms/nested/nested/nested.component';
+import { CvaComponent } from './forms/nested/cva/cva.component';
 
 const appRoutes: Routes = [
     {path: 'test', component: TestComponent},
@@ -33,9 +42,17 @@ const appRoutes: Routes = [
         component: StateJoinTestComponent
     },
     {
+        path: 'forms',
+        component: FormsComponent,
+    },
+    {
+        path: 'nested',
+        component: NestedComponent
+    },
+    {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'state-join'
+        redirectTo: 'nested'
     }
 ];
 
@@ -46,13 +63,21 @@ const appRoutes: Routes = [
         CreateComponent,
         TestComponent,
         OtherTestComponent,
-        StateJoinTestComponent
+        StateJoinTestComponent,
+        FormsComponent,
+        TemplateDrivenComponent,
+        ReactiveComponent,
+        NameEditorComponent,
+        ProfileEditorComponent,
+        NestedComponent,
+        CvaComponent
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         RouterModule.forRoot(
             appRoutes,
-            {enableTracing: true} // <-- debugging purposes only
+            {enableTracing: false} // <-- debugging purposes only
         ),
         NgxsModule.forRoot([
             AccountState,
@@ -61,8 +86,10 @@ const appRoutes: Routes = [
         NgxsReduxDevtoolsPluginModule.forRoot(),
         NgxsLoggerPluginModule.forRoot(),
         MatInputModule,
+        MatSelectModule,
         BrowserAnimationsModule,
         BrandModule,
+        ReactiveFormsModule
     ],
     providers: [TutorialResolverService],
     bootstrap: [AppComponent]

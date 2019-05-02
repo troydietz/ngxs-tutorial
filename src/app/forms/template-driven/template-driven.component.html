@@ -1,0 +1,32 @@
+<h1>Template-Driven Form</h1>
+<pre>{{diagnostic}}</pre>
+Valid: <span [class.isFormValid]="heroForm.valid" [class.isFormInvalid]="!heroForm.valid">
+    {{heroForm.valid}}
+</span><br>
+Value: {{stringify(heroForm.value)}}
+<br><br>
+
+<form #heroForm="ngForm">
+    <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="model.name" (ngModelChange)="nameChanged($event)" name="name" required #spy>
+    </mat-form-field>
+    Model name: {{model.name}}<br>
+    Input className: {{spy.className}}<br><br>
+
+    <mat-form-field>
+        <input matInput placeholder="Alter Ego" [(ngModel)]="model.alterEgo" name="alterEgo" required>
+    </mat-form-field>
+    Model name: {{model.alterEgo}}<br>
+
+    <mat-form-field>
+    <mat-label>Power</mat-label>
+    <mat-select [(ngModel)]="model.power" name="power" required>
+        <mat-option *ngFor="let pow of powers" [value]="pow">
+            {{pow}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+</form>

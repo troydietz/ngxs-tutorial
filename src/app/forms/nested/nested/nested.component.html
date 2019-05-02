@@ -1,0 +1,13 @@
+<h1>Demonstrating Nested Forms</h1>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    Value: <pre>{{getFormValueJson()}}</pre>
+    Valid: <span [class.isFormValid]="profileForm.valid" [class.isFormInvalid]="!profileForm.valid">
+    {{profileForm.valid}}
+    </span><br>
+
+    <h2>CVA</h2>
+    CVA Error State: <pre>{{getCVAErrorState()}}</pre><br>
+    <app-cva formControlName="cva"></app-cva>
+
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>

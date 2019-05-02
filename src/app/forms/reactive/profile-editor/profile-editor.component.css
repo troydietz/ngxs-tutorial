@@ -1,0 +1,7 @@
+.isFormValid {
+    background-color: green;
+}
+
+.isFormInvalid {
+    background-color: red;
+}
