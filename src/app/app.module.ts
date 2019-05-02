@@ -16,9 +16,7 @@ import { OtherTestComponent } from './other-test/other-test.component';
 import { TutorialResolverService } from './tutorial-resolver.service';
 import { StateJoinTestComponent } from './state-join-test/state-join-test.component';
 import { AccountState } from './state-join-test/account.state';
-import { BrandState } from './state-join-test/brand.state';
 import { BrandModule } from './brand.module';
-import { FormsComponent } from './forms/forms/forms.component';
 import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material';
@@ -42,17 +40,21 @@ const appRoutes: Routes = [
         component: StateJoinTestComponent
     },
     {
-        path: 'forms',
-        component: FormsComponent,
+        path: 'forms-reactive',
+        component: ReactiveComponent,
     },
     {
-        path: 'nested',
+        path: 'forms-template-driven',
+        component: TemplateDrivenComponent,
+    },
+    {
+        path: 'forms-nested',
         component: NestedComponent
     },
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'nested'
+        redirectTo: 'forms-nested'
     }
 ];
 
@@ -64,7 +66,6 @@ const appRoutes: Routes = [
         TestComponent,
         OtherTestComponent,
         StateJoinTestComponent,
-        FormsComponent,
         TemplateDrivenComponent,
         ReactiveComponent,
         NameEditorComponent,
