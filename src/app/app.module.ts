@@ -25,6 +25,7 @@ import { NameEditorComponent } from './forms/reactive/name-editor/name-editor.co
 import { ProfileEditorComponent } from './forms/reactive/profile-editor/profile-editor.component';
 import { NestedComponent } from './forms/nested/nested/nested.component';
 import { CvaComponent } from './forms/nested/cva/cva.component';
+import { SimpleNestingComponent } from './forms/nested/simple-nesting/simple-nesting.component';
 
 const appRoutes: Routes = [
     {path: 'test', component: TestComponent},
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
         NameEditorComponent,
         ProfileEditorComponent,
         NestedComponent,
-        CvaComponent
+        CvaComponent,
+        SimpleNestingComponent
     ],
     imports: [
         BrowserModule,

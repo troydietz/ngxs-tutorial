@@ -2,19 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-nested',
-  templateUrl: './nested.component.html',
-  styleUrls: ['./nested.component.css']
+    selector: 'app-nested',
+    templateUrl: './nested.component.html',
+    styleUrls: ['./nested.component.css']
 })
 export class NestedComponent implements OnInit {
-    constructor() {}
+    // TODO look into how to initialize forms
+    private initialValue = {
+        cva: {
+            cvaFirstName: 'CVA First Name',
+            cvaEmail: 'cva@email.com'
+        },
+        simpleNesting: {
+            simpleNestingFirstName: 'Simple Nesting First Name',
+            simpleNestingEmail: 'simpleNesting@email.com'
+        }
+    };
 
-    public ngOnInit(): void {
+    public profileForm: FormGroup;
+
+    constructor() {
     }
 
-    profileForm = new FormGroup({
-        cva: new FormControl('')
-    });
+    public ngOnInit(): void {
+        this.profileForm = new FormGroup({
+            cva: new FormControl(this.initialValue.cva)
+        });
+    }
+
+    updateValue() {
+        this.profileForm.setValue(this.initialValue);
+    }
 
     getFormValueJson() {
         return JSON.stringify(this.profileForm.value);
@@ -23,6 +41,7 @@ export class NestedComponent implements OnInit {
     getCVAErrorState() {
         return JSON.stringify(this.profileForm.controls.cva.errors);
     }
+
     onSubmit() {
         console.warn(this.profileForm.value);
     }

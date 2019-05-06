@@ -1,0 +1,10 @@
+<ng-container formGroupName="simpleNesting">
+    First Name Error State: <pre>{{getFirstNameErrorState()}}</pre>
+    Email Error State: <pre>{{getEmailErrorState()}}</pre>
+    <mat-form-field>
+        <input matInput placeholder="Simple Nesting First Name" formControlName="simpleNestingFirstName" required>
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="Simple Nesting Email" formControlName="simpleNestingEmail" required>
+    </mat-form-field>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
     AbstractControl,
     ControlValueAccessor,
@@ -28,7 +28,7 @@ import {
     ]
 })
 export class CvaComponent implements OnInit, ControlValueAccessor, Validator {
-
+    // no need for @Input: initial values are set by setting values in the parent form
     public cvaForm: FormGroup = new FormGroup(
         {
             cvaFirstName: new FormControl('', [Validators.required]),

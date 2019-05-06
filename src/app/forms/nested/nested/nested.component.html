@@ -9,5 +9,9 @@
     CVA Error State: <pre>{{getCVAErrorState()}}</pre><br>
     <app-cva formControlName="cva"></app-cva>
 
+    <h2>Simple</h2>
+    <app-simple-nesting [initialValue]="initialValue.simpleNesting"></app-simple-nesting>
+
+    <button (click)="updateValue()">Update Value</button>
     <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>
